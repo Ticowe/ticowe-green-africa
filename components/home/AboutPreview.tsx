@@ -7,7 +7,7 @@ export default function AboutPreview() {
       <div className="mx-auto grid max-w-7xl items-center gap-16 px-6 lg:grid-cols-2 lg:px-10">
         <div className="relative overflow-hidden rounded-[2rem] shadow-2xl">
           <Image
-            src="/about.jpg"
+            src="/images/about.png"
             alt="About TICOWE"
             width={700}
             height={700}

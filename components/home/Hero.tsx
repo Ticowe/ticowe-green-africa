@@ -100,7 +100,7 @@ export default function HeroSection() {
         >
           <div className="relative overflow-hidden rounded-[2rem] border border-white/10 shadow-2xl">
             <Image
-              src="/hero.jpg"
+              src="/images/hero.png"
               alt="TICOWE Community"
               width={700}
               height={700}

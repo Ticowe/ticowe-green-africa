@@ -42,7 +42,7 @@ export default function Impact() {
 
         <div className="relative overflow-hidden rounded-[2rem] shadow-2xl">
           <Image
-            src="/impact.jpg"
+            src="/images/impact.png"
             alt="Community Impact"
             width={700}
             height={700}
