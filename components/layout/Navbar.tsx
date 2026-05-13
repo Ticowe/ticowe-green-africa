@@ -42,7 +42,7 @@ export default function Navbar() {
           </div>
 
           {/* Text */}
-          <div>
+          {/* <div>
             <h1 className="text-2xl font-extrabold tracking-tight text-[#0F4C4C]">
               TICOWE
             </h1>
@@ -54,7 +54,7 @@ export default function Navbar() {
             <p className="hidden text-xs text-[#7A7A7A] md:block">
               Empowering Communities, Transforming Lives
             </p>
-          </div>
+          </div> */}
         </Link>
 
         {/* Desktop Navigation */}
