@@ -148,9 +148,9 @@ export default function Footer() {
                 </div>
 
                 <div className="space-y-1">
-                  <p>+254 714 076 175</p>
-                  <p>+254 727 104 592</p>
-                  <p>+254 796 519 721</p>
+                  <p>+254 746 344 222 - Organization Director</p>
+                  <p>+254 723 540 899 - Board Chairperson</p>
+                  <p>+254 720 997 371 - Office Line</p>
                 </div>
               </div>
 
@@ -159,7 +159,7 @@ export default function Footer() {
                   <Mail size={18} className="text-[#C65D3A]" />
                 </div>
 
-                <p>ticowecbo2019@gmail.com</p>
+                <p>ticowegreenafrica@gmail.com</p>
               </div>
             </div>
           </div>

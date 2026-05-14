@@ -16,6 +16,8 @@ const navLinks = [
   { name: "Impact", href: "/impact" },
   { name: "Gallery", href: "/gallery" },
   { name: "Volunteer", href: "/volunteer" },
+  {name: "News", href: "/news" },
+  {name: "Future Plans", href: "/future-plans" },
   { name: "Contact", href: "/contact" },
 ];
 

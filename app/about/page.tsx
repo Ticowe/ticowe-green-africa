@@ -84,6 +84,109 @@ export default function About() {
         </div>
       </section>
 
+<section className="bg-white py-24 px-6 overflow-hidden">
+  <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+    
+    {/* Left Content */}
+    <div>
+      <span className="inline-block text-[#C65D3A] text-xs font-bold uppercase tracking-widest mb-4 border border-[#C65D3A]/20 bg-[#C65D3A]/5 px-4 py-1 rounded-full">
+        Who We Are
+      </span>
+
+      <h2 className="text-4xl md:text-5xl font-black leading-tight text-[#0F4C4C] mb-6">
+        Empowering Communities Through
+        <span className="block text-[#D7992E]">
+          Sustainable Development
+        </span>
+      </h2>
+
+      <p className="text-gray-700 text-lg leading-relaxed mb-6">
+        TICOWE Green Africa is a community-based non-profit organization
+        committed to improving livelihoods and building resilient communities
+        across Kenya through agriculture, education, women empowerment,
+        youth development, and climate-smart initiatives.
+      </p>
+
+      <p className="text-gray-700 text-lg leading-relaxed mb-8">
+        We believe that sustainable transformation begins at the grassroots.
+        Through volunteerism, partnerships, training, and innovation, we
+        empower vulnerable communities to become self-reliant and economically
+        stable.
+      </p>
+
+      {/* Features */}
+      <div className="grid sm:grid-cols-2 gap-5">
+        <div className="rounded-2xl border border-[#0F4C4C]/10 bg-[#F5F1E6] p-5">
+          <h3 className="font-bold text-[#0F4C4C] mb-2">
+            Community Driven
+          </h3>
+
+          <p className="text-sm text-gray-600 leading-relaxed">
+            Our initiatives are built around local community needs and
+            participation.
+          </p>
+        </div>
+
+        <div className="rounded-2xl border border-[#0F4C4C]/10 bg-[#F5F1E6] p-5">
+          <h3 className="font-bold text-[#0F4C4C] mb-2">
+            Sustainable Impact
+          </h3>
+
+          <p className="text-sm text-gray-600 leading-relaxed">
+            We focus on long-term solutions that create lasting positive
+            change.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    {/* Right Side Cards */}
+    <div className="relative">
+      {/* Main Card */}
+      <div className="rounded-[2rem] bg-gradient-to-br from-[#0F4C4C] to-[#145B5B] p-10 text-white shadow-2xl">
+        <h3 className="text-3xl font-bold mb-6 text-[#D7992E]">
+          Our Focus Areas
+        </h3>
+
+        <div className="space-y-5">
+          {[
+            "Women Empowerment",
+            "Youth Development",
+            "Agriculture & Food Security",
+            "Climate Smart Farming",
+            "Community Health",
+            "Education Support",
+          ].map((item) => (
+            <div
+              key={item}
+              className="flex items-center gap-4 rounded-2xl bg-white/10 px-5 py-4 backdrop-blur-md"
+            >
+              <div className="h-3 w-3 rounded-full bg-[#D7992E]" />
+
+              <p className="font-medium text-[#E6EFEA]">
+                {item}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Floating Badge */}
+      <div className="absolute -bottom-8 -left-8 hidden md:block">
+        <div className="rounded-3xl bg-[#D7992E] px-8 py-6 shadow-2xl">
+          <h4 className="text-4xl font-black text-white">
+            6+
+          </h4>
+
+          <p className="text-sm font-medium text-white/90">
+            Counties Reached
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
       {/* Background */}
       <section className="py-20 px-6">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
@@ -95,7 +198,7 @@ export default function About() {
               Built on Volunteerism and Community Spirit
             </h2>
             <p className="text-gray-700 leading-relaxed mb-4">
-              Founded in October 2019 and officially registered on 8th March 2023, TICOWE operates in Ndhiwa Sub-County of Homa Bay County.
+              Founded in October 2019 and officially registered on 8th March 2023. TICOWE operates in Homa Bay, Migori, Kisumu, Vihiga, Kakamega, and Busia Counties.
             </p>
             <p className="text-gray-700 leading-relaxed">
               From farming to ICT training and youth empowerment, we build sustainable communities.

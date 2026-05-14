@@ -25,12 +25,12 @@ export default function Contact() {
       icon: "📞",
       label: "Phone",
       value:
-        "+254 714 076 175\n+254 727 104 592\n+254 796 519 721",
+        "+254 746 344 222 \n+254 723 540 899 \n+254 720 997 371",
     },
     {
       icon: "✉️",
       label: "Email",
-      value: "ticowecbo2019@gmail.com",
+      value: "ticowegreenafrica@gmail.com",
     },
     {
       icon: "🕐",
