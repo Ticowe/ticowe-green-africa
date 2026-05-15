@@ -7,7 +7,7 @@ import Image from "next/image";
 export default function Gallery() {
   const items = [
     {
-      image: "/gallery/orphan_support.jpeg",
+      image: "/gallery/orphan_support.png",
       title: "Orphan Support Gatherings",
       desc: "Supporting orphans and guardians through food donations and care programs.",
       category: "Child Support",
@@ -19,31 +19,31 @@ export default function Gallery() {
       category: "Peace Building",
     },
     {
-      image: "/gallery/house_construction.jpeg",
+      image: "/gallery/house_construction.png",
       title: "House Construction for Widows",
       desc: "Volunteers building homes for vulnerable widows in Ndhiwa.",
       category: "Community Support",
     },
     {
-      image: "/gallery/farm_training.jpeg",
+      image: "/gallery/horticulture_farming.png",
       title: "Horticulture Harvesting",
       desc: "Farmers harvesting fresh produce using modern techniques.",
       category: "Agriculture",
     },
     {
-      image: "/gallery/farm_training.jpeg",
+      image: "/gallery/farm.jpeg",
       title: "Sustainable Agriculture Training",
       desc: "Training farmers in climate-smart and regenerative farming.",
       category: "Agriculture",
     },
     {
-      image: "/gallery/farm_training.jpeg",
+      image: "/gallery/dairy_farming.png",
       title: "Dairy Farming Initiatives",
       desc: "Strengthening dairy farming through training and market access.",
       category: "Agribusiness",
     },
     {
-      image: "/gallery/farm_training.jpeg",
+      image: "/gallery/poultry_farming.png",
       title: "Poultry Farming Programs",
       desc: "Livelihood poultry projects empowering women and youth.",
       category: "Agribusiness",
@@ -55,25 +55,25 @@ export default function Gallery() {
       category: "Peace Building",
     },
     {
-      image: "/gallery/farm_training.jpeg",
+      image: "/gallery/food_donation.png",
       title: "Food Donation Distributions",
       desc: "Community food support events for vulnerable families.",
       category: "Welfare",
     },
     {
-      image: "/gallery/farm_training.jpeg",
+      image: "/gallery/farmer_training.png",
       title: "Farmer Field Training",
       desc: "Hands-on agricultural training by field officers.",
       category: "Agriculture",
     },
     {
-      image: "/gallery/farm_training.jpeg",
+      image: "/gallery/library_openning.png",
       title: "Community Library Opening",
       desc: "Opening a learning center for vulnerable children.",
       category: "Education",
     },
     {
-      image: "/gallery/farm_training.jpeg",
+      image: "/gallery/tree_nursery.png",
       title: "Tree Nursery Establishment",
       desc: "Community nurseries restoring biodiversity and livelihoods.",
       category: "Environment",
