@@ -20,7 +20,7 @@ const programs = [
     bg: "#556B2F15",
     description:
       "Equipping smallholder farmers with tools, training, and resources to boost yields and ensure year-round food security.",
-    href: "/programs/agriculture",
+    href: "/programs",
   },
   {
     title: "Women Empowerment",
@@ -29,7 +29,7 @@ const programs = [
     bg: "#C65D3A15",
     description:
       "Building economic independence and leadership capacity for women through skills training, microfinance, and mentorship.",
-    href: "/programs/women",
+    href: "/programs",
   },
   {
     title: "Youth Development",
@@ -38,7 +38,7 @@ const programs = [
     bg: "#0F4C4C15",
     description:
       "Unlocking the potential of young people through entrepreneurship, vocational training, and civic engagement programs.",
-    href: "/programs/youth",
+    href: "/programs",
   },
   {
     title: "Education Support",
@@ -47,7 +47,7 @@ const programs = [
     bg: "#D7992E15",
     description:
       "Providing scholarships, school infrastructure, and learning materials to keep children in school and thriving.",
-    href: "/programs/education",
+    href: "/programs",
   },
   {
     title: "Climate Smart Farming",
@@ -56,7 +56,7 @@ const programs = [
     bg: "#7DA79A15",
     description:
       "Introducing drought-resistant crops, water harvesting, and eco-friendly practices to build resilience against climate change.",
-    href: "/programs/climate",
+    href: "/programs",
   },
   {
     title: "Community Health",
@@ -65,7 +65,7 @@ const programs = [
     bg: "#C65D3A15",
     description:
       "Improving access to primary healthcare, nutrition, and hygiene education for families in underserved communities.",
-    href: "/programs/health",
+    href: "/programs",
   },
 ];
 
