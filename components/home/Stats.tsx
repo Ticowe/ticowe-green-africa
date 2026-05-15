@@ -8,7 +8,7 @@ const stats = [
     label: "Farmers Supported",
   },
   {
-    value: "60%",
+    value: "5K+",
     label: "Women Beneficiaries",
   },
   {
