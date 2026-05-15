@@ -32,7 +32,7 @@ export default function BoardMembers() {
         {
           name: "Phanis Awiti Odhiambo ",
           role: "Director & Founder",
-          image: "board/director.png",
+          image: "board/director.jpeg",
           description: "Phanis Awiti Odhiambo is the Founder and Director of TICOWE Green Africa, bringing strong expertise in finance, community development, and sustainable empowerment initiatives. She holds a Bachelor of Commerce (Finance) degree from Pwani University and is currently pursuing a Master of Business Administration (MBA) in Finance at the European University of Lefke, Cyprus.With extensive experience in financial management and administration, she has worked with DTB Bank and other reputable financial institutions, where she gained valuable skills in strategic planning, financial operations, and organizational leadership.Phanis is deeply passionate about environmental conservation, women empowerment, and community transformation. Through her leadership, TICOWE Green Africa continues to support farmers, empower women and youth, and promote sustainable development programs that improve livelihoods and strengthen communities across Kenya.",
         },
         {
