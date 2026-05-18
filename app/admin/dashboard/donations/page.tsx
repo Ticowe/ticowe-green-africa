@@ -46,7 +46,7 @@ export default async function DonationsPage() {
 
   return (
     <div className="p-8">
-      {/* HEADER */}
+      
       <div className="mb-8">
         <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#C65D3A]">
           Finance
