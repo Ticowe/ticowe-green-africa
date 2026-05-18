@@ -46,28 +46,28 @@ export default function Footer() {
             {/* Socials */}
             <div className="mt-8 flex gap-4">
               <Link
-                href="#"
+                href="https://www.facebook.com/profile.php?id=61589745010789"
                 className="flex h-11 w-11 items-center justify-center rounded-full bg-white/10 transition-all duration-300 hover:scale-110 hover:bg-[#D7992E]"
               >
                 <FaFacebookF size={17} />
               </Link>
 
               <Link
-                href="#"
+                href="https://www.instagram.com/ticowegreenafrica/?hl=en"
                 className="flex h-11 w-11 items-center justify-center rounded-full bg-white/10 transition-all duration-300 hover:scale-110 hover:bg-[#C65D3A]"
               >
                 <FaInstagram size={17} />
               </Link>
 
               <Link
-                href="#"
+                href="https://x.com/ticowe26683"
                 className="flex h-11 w-11 items-center justify-center rounded-full bg-white/10 transition-all duration-300 hover:scale-110 hover:bg-[#7DA79A]"
               >
                 <FaXTwitter size={17} />
               </Link>
 
               <Link
-                href="#"
+                href="https://www.linkedin.com/in/ticowe-africa-2ab94040b/"
                 className="flex h-11 w-11 items-center justify-center rounded-full bg-white/10 transition-all duration-300 hover:scale-110 hover:bg-[#556B2F]"
               >
                 <FaLinkedinIn size={17} />
