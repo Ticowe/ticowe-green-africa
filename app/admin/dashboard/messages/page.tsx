@@ -11,6 +11,8 @@ const statusStyles: Record<string, string> = {
 };
 
 export default function MessagesPage() {
+  const [replyText, setReplyText] = useState("");
+  const [sending, setSending] = useState(false);
   const [messages, setMessages] = useState<MessageRow[]>([]);
   const [selected, setSelected] = useState<MessageRow | null>(null);
   const [tab, setTab] = useState<"all" | "unread" | "read" | "replied">("all");
@@ -115,13 +117,56 @@ export default function MessagesPage() {
               <div className="rounded-2xl bg-[#F5F1E6] px-8 py-7">
                 <p className="text-[15px] leading-8 text-[#3a4a3a] whitespace-pre-wrap">{selected.message}</p>
               </div>
+
+              <div className="mt-8 border-t pt-6">
+  <h3 className="mb-3 text-sm font-bold text-[#1A2A22]">
+    Reply to this message
+  </h3>
+
+  <textarea
+    rows={5}
+    value={replyText}
+    onChange={(e) => setReplyText(e.target.value)}
+    placeholder="Write your reply..."
+    className="w-full rounded-xl border border-[#e0d8c8] bg-[#F5F1E6] px-4 py-3 text-sm outline-none focus:border-[#0F4C4C]"
+  />
+
+  <button
+    disabled={sending || !replyText}
+    onClick={async () => {
+      setSending(true);
+
+      try {
+        const res = await fetch("/api/reply", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            id: selected.id,
+            email: selected.email,
+            subject: selected.subject,
+            reply: replyText,
+          }),
+        });
+
+        if (!res.ok) throw new Error("Failed to send");
+
+        setReplyText("");
+        await loadMessages();
+      } catch (err) {
+        alert("Failed to send reply");
+      } finally {
+        setSending(false);
+      }
+    }}
+    className="mt-3 rounded-xl bg-[#0F4C4C] px-6 py-3 text-sm font-bold text-white"
+  >
+    {sending ? "Sending..." : "Send Reply"}
+  </button>
+</div>
+
+
               <div className="mt-8 flex flex-wrap gap-3">
-                <a href={`mailto:${selected.email}?subject=Re: ${encodeURIComponent(selected.subject)}`}
-                  onClick={() => markAs(selected.id, "replied")}
-                  className="rounded-xl bg-[#0F4C4C] px-6 py-3 text-sm font-bold text-white transition hover:bg-[#145B5B]"
-                >
-                  Reply via Email
-                </a>
+                
                 {selected.status !== "replied" && (
                   <button onClick={() => markAs(selected.id, "replied")}
                     className="rounded-xl border border-[#e0d8c8] px-6 py-3 text-sm font-bold text-[#3a4a3a] transition hover:bg-[#F5F1E6]"
