@@ -60,7 +60,7 @@ export default async function NewsPage() {
           <h1 className="mt-1 text-3xl font-black text-[#1A2A22]">News Articles</h1>
           <p className="mt-1 text-sm text-[#5a6a5a]">{published} published · {drafts} draft{drafts !== 1 ? "s" : ""}</p>
         </div>
-        <Link href="/admin/news/new" className="rounded-2xl bg-[#0F4C4C] px-6 py-3 text-sm font-bold text-white shadow-md transition hover:bg-[#145B5B]">
+        <Link href="/admin/dashboard//news/new" className="rounded-2xl bg-[#0F4C4C] px-6 py-3 text-sm font-bold text-white shadow-md transition hover:bg-[#145B5B]">
           + New Article
         </Link>
       </div>
@@ -80,14 +80,14 @@ export default async function NewsPage() {
                 <tr>
                   <td colSpan={6} className="px-6 py-12 text-center text-sm text-[#9a9a8a]">
                     No articles yet.{" "}
-                    <Link href="/admin/news/new" className="font-bold text-[#0F4C4C] underline">Write your first article</Link>
+                    <Link href="/admin/dashboard/news/new" className="font-bold text-[#0F4C4C] underline">Write your first article</Link>
                   </td>
                 </tr>
               )}
               {articles.map((article) => (
                 <tr key={article.id} className="transition hover:bg-[#F5F1E6]/50">
                   <td className="px-6 py-4">
-                    <Link href={`/admin/news/${article.id}/edit`} className="font-semibold text-[#1A2A22] hover:text-[#0F4C4C] hover:underline leading-snug line-clamp-2 max-w-xs block">
+                    <Link href={`/admin/dashboard/news/${article.id}/edit`} className="font-semibold text-[#1A2A22] hover:text-[#0F4C4C] hover:underline leading-snug line-clamp-2 max-w-xs block">
                       {article.title}
                     </Link>
                   </td>

@@ -44,7 +44,7 @@ export default function NewArticlePage() {
     }
 
     setSaveStatus("saved");
-    router.push("/admin/news");
+    router.push("/admin/dashboard/news");
   }
 
   const allValid = !!form.title && !!form.excerpt && form.content.length > 50 && !!form.category;
