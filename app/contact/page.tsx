@@ -3,6 +3,7 @@
 "use client";
 
 import { useState } from "react";
+import { supabase } from "@/lib/supabase/client";
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -13,6 +14,44 @@ export default function Contact() {
   });
 
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  async function handleSubmit() {
+    setLoading(true);
+    setError("");
+
+    try {
+      // Cast supabase instance to 'any' to bypass implicit table type safety limitations
+      const { error } = await (supabase as any).from("messages").insert([
+        {
+          full_name: form.name,
+          email: form.email,
+          subject: form.subject,
+          message: form.message,
+          status: "unread",
+        },
+      ]);
+
+      if (error) {
+        setError(error.message);
+        return;
+      }
+
+      setSent(true);
+
+      setForm({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+    } catch (err: any) {
+      setError(err.message || "Something went wrong");
+    } finally {
+      setLoading(false);
+    }
+  }
 
   const contactInfo = [
     {
@@ -55,8 +94,8 @@ export default function Contact() {
           </h1>
 
           <p className="mx-auto max-w-2xl text-lg leading-8 text-[#E6EFEA]">
-            Whether you're a donor, partner, volunteer, or community
-            member — we'd love to hear from you.
+            Whether you&apos;re a donor, partner, volunteer, or community
+            member — we&apos;d love to hear from you.
           </p>
         </div>
       </section>
@@ -133,6 +172,12 @@ export default function Contact() {
                   Send Us a Message
                 </h3>
 
+                {error && (
+                  <div className="mb-6 rounded-2xl bg-red-100 px-4 py-3 text-sm text-red-600">
+                    {error}
+                  </div>
+                )}
+
                 <div className="mb-5 grid gap-5 md:grid-cols-2">
                   {[
                     {
@@ -208,10 +253,11 @@ export default function Contact() {
                 </div>
 
                 <button
-                  onClick={() => setSent(true)}
-                  className="w-full rounded-2xl bg-gradient-to-r from-[#0F4C4C] to-[#1E4E3F] px-6 py-4 text-sm font-bold text-white shadow-lg transition duration-300 hover:scale-[1.01] hover:shadow-2xl"
+                  onClick={handleSubmit}
+                  disabled={loading}
+                  className="w-full rounded-2xl bg-gradient-to-r from-[#0F4C4C] to-[#1E4E3F] px-6 py-4 text-sm font-bold text-white shadow-lg transition duration-300 hover:scale-[1.01] hover:shadow-2xl disabled:opacity-60"
                 >
-                  Send Message
+                  {loading ? "Sending..." : "Send Message"}
                 </button>
               </>
             )}
