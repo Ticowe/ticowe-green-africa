@@ -16,7 +16,7 @@ export default function NewsActions({ id, status, publishNews, unpublishNews, de
 
   return (
     <div className="flex items-center gap-2">
-      <Link href={`/admin/news/${id}/edit`} className="rounded-lg border border-[#e0d8c8] px-3 py-1.5 text-xs font-bold text-[#3a4a3a] transition hover:bg-[#F5F1E6]">
+      <Link href={`/admin/dashboard/news/${id}/edit`} className="rounded-lg border border-[#e0d8c8] px-3 py-1.5 text-xs font-bold text-[#3a4a3a] transition hover:bg-[#F5F1E6]">
         Edit
       </Link>
       {status === "draft" ? (
