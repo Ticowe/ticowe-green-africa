@@ -73,16 +73,42 @@ export default function NewArticlePage() {
     const { data: { user } } = await supabase.auth.getUser();
 
     // Cast supabase client reference to 'any' to bypass the 'never[]' object literal property error
-    const { error } = await (supabase as any).from("news").insert({
-      title: form.title,
-      excerpt: form.excerpt,
-      content: form.content,
-      category: form.category,
-      cover_image: form.cover_image || null,
-      author_id: user?.id ?? null,
-      status: publish ? "published" : "draft",
-      published_at: publish ? new Date().toISOString() : null,
+    const { data, error } = await (supabase as any)
+  .from("news")
+  .insert({
+    title: form.title,
+    excerpt: form.excerpt,
+    content: form.content,
+    category: form.category,
+    cover_image: form.cover_image || null,
+    author_id: user?.id ?? null,
+    status: publish ? "published" : "draft",
+    published_at: publish
+      ? new Date().toISOString()
+      : null,
+  })
+  .select()
+  .single();
+
+  if (publish && data) {
+  try {
+    await fetch("/api/send-newsletter", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        articleId: data.id,
+        title: data.title,
+        excerpt: data.excerpt,
+        category: data.category,
+        cover_image: data.cover_image,
+      }),
     });
+  } catch (err) {
+    console.error("Newsletter email failed:", err);
+  }
+}
 
     if (error) {
       setSaveStatus("error");
