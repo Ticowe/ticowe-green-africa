@@ -119,7 +119,7 @@ export default async function AdminDashboard() {
         <div className="rounded-2xl bg-white p-6 shadow-sm">
           <div className="mb-5 flex items-center justify-between">
             <h2 className="font-black text-[#1A2A22]">Recent Messages</h2>
-            <Link href="/admin/messages" className="text-xs font-bold text-[#C65D3A] hover:underline">View all →</Link>
+            <Link href="/admin/dashboard/messages" className="text-xs font-bold text-[#C65D3A] hover:underline">View all →</Link>
           </div>
           <div className="space-y-3">
             {recent.messages.length === 0 && <p className="text-sm text-[#9a9a8a]">No messages yet.</p>}
@@ -140,7 +140,7 @@ export default async function AdminDashboard() {
         <div className="rounded-2xl bg-white p-6 shadow-sm">
           <div className="mb-5 flex items-center justify-between">
             <h2 className="font-black text-[#1A2A22]">New Volunteers</h2>
-            <Link href="/admin/volunteers" className="text-xs font-bold text-[#C65D3A] hover:underline">View all →</Link>
+            <Link href="/admin/dashboard/volunteers" className="text-xs font-bold text-[#C65D3A] hover:underline">View all →</Link>
           </div>
           <div className="space-y-3">
             {recent.volunteers.length === 0 && <p className="text-sm text-[#9a9a8a]">No applications yet.</p>}
@@ -164,7 +164,7 @@ export default async function AdminDashboard() {
         <div className="rounded-2xl bg-white p-6 shadow-sm">
           <div className="mb-5 flex items-center justify-between">
             <h2 className="font-black text-[#1A2A22]">Latest News</h2>
-            <Link href="/admin/news" className="text-xs font-bold text-[#C65D3A] hover:underline">View all →</Link>
+            <Link href="/admin/dashboard/news" className="text-xs font-bold text-[#C65D3A] hover:underline">View all →</Link>
           </div>
           <div className="space-y-3">
             {recent.news.length === 0 && <p className="text-sm text-[#9a9a8a]">No articles yet.</p>}
@@ -178,7 +178,7 @@ export default async function AdminDashboard() {
               </div>
             ))}
           </div>
-          <Link href="/admin/news/new" className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-[#0F4C4C] py-3 text-sm font-bold text-white transition hover:bg-[#145B5B]">
+          <Link href="/admin/dashboard/news/new" className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-[#0F4C4C] py-3 text-sm font-bold text-white transition hover:bg-[#145B5B]">
             + New Article
           </Link>
         </div>
