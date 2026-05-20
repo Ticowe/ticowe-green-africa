@@ -26,9 +26,9 @@ export async function POST(req: Request) {
 
     // 2. Send thank you email
     await resend.emails.send({
-      from: "TICOWE Africa <noreply@ticowegreenafrica.com>", // must be verified domain
+      from: "TICOWE Green Africa <noreply@ticowegreenafrica.com>", // must be verified domain
       to: email,
-      subject: "Thank you for contacting TICOWE Africa 💚",
+      subject: "Thank you for contacting TICOWE Green Africa 💚",
       html: `
         <div style="font-family: Arial; line-height: 1.6;">
           <h2>Thank you, ${name}!</h2>
@@ -36,7 +36,7 @@ export async function POST(req: Request) {
           <blockquote>${message}</blockquote>
           <p>Our team will respond within 2–3 business days.</p>
           <br/>
-          <p>— TICOWE Africa Team</p>
+          <p>— TICOWE Green Africa Team</p>
         </div>
       `,
     });

@@ -10,15 +10,15 @@ export async function POST(req: Request) {
 
     // 1. send email via Resend
     await resend.emails.send({
-      from: "TICOWE Africa <noreply@ticowegreenafrica.com>",
+      from: "TICOWE Green Africa <noreply@ticowegreenafrica.com>",
       to: email,
       subject: `Re: ${subject}`,
       html: `
         <div style="font-family:Arial;line-height:1.6">
-          <h2>Response from TICOWE Africa</h2>
+          <h2>Response from TICOWE Green Africa</h2>
           <p>${reply}</p>
           <br/>
-          <p>— TICOWE Team</p>
+          <p>— TICOWE Green Africa Team</p>
         </div>
       `,
     });
