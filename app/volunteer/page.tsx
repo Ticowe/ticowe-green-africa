@@ -1,9 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import { supabase } from "@/lib/supabase/client";
 
 export default function VolunteerPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const [form, setForm] = useState({
     name: "",
@@ -14,6 +17,48 @@ export default function VolunteerPage() {
     motivation: "",
     duration: "",
   });
+
+  async function handleSubmit() {
+    setLoading(true);
+    setError("");
+
+    try {
+      // Cast supabase instance to 'any' to bypass strict schema validation errors
+      const { error } = await (supabase as any).from("volunteers").insert([
+        {
+          full_name: form.name,
+          email: form.email,
+          phone: form.phone,
+          country: form.country,
+          skills: form.skills,
+          motivation: form.motivation,
+          duration: form.duration,
+          status: "pending",
+        },
+      ]);
+
+      if (error) {
+        setError(error.message);
+        return;
+      }
+
+      setSubmitted(true);
+
+      setForm({
+        name: "",
+        email: "",
+        phone: "",
+        country: "",
+        skills: "",
+        motivation: "",
+        duration: "",
+      });
+    } catch (err: any) {
+      setError(err.message || "Something went wrong");
+    } finally {
+      setLoading(false);
+    }
+  }
 
   const roles = [
     {
@@ -189,6 +234,12 @@ export default function VolunteerPage() {
             </div>
           ) : (
             <div className="bg-[#F5F1E6] rounded-3xl p-8 md:p-10">
+              {error && (
+                <div className="mb-6 rounded-2xl bg-red-100 px-4 py-3 text-sm text-red-600">
+                  {error}
+                </div>
+              )}
+
               <div className="grid md:grid-cols-2 gap-5">
                 {[
                   {
@@ -300,10 +351,11 @@ export default function VolunteerPage() {
               </div>
 
               <button
-                onClick={() => setSubmitted(true)}
-                className="w-full mt-8 bg-gradient-to-r from-[#C65D3A] to-[#D7992E] text-white py-4 rounded-2xl font-bold hover:opacity-90 transition"
+                onClick={handleSubmit}
+                disabled={loading}
+                className="w-full mt-8 bg-gradient-to-r from-[#C65D3A] to-[#D7992E] text-white py-4 rounded-2xl font-bold hover:opacity-90 transition disabled:opacity-60"
               >
-                Submit Application
+                {loading ? "Submitting..." : "Submit Application"}
               </button>
             </div>
           )}
