@@ -86,7 +86,7 @@ export default async function AdminDashboard() {
     { label: "Volunteers", value: stats.volunteers, href: "/admin/dashboard/volunteers", color: "from-[#1E4E3F] to-[#0F4C4C]", accent: "#C65D3A", icon: "🤝" },
     { label: "Unread Messages", value: stats.unreadMessages, href: "/admin/dashboard/messages", color: "from-[#145B5B] to-[#1A3A2A]", accent: "#D7992E", icon: "✉️" },
     { label: "Published Articles", value: stats.publishedNews, href: "/admin/dashboard/news", color: "from-[#1A3A2A] to-[#1E4E3F]", accent: "#C65D3A", icon: "📰" },
-    { label: "Total Donations (USD)", value: `$${stats.totalDonations.toLocaleString()}`, href: "/admin/dashboard/donations", color: "from-[#0F4C4C] to-[#1A3A2A]", accent: "#D7992E", icon: "💰" },
+    { label: "Total Donations (Ksh)", value: `Ksh. ${stats.totalDonations.toLocaleString()}`, href: "/admin/dashboard/donations", color: "from-[#0F4C4C] to-[#1A3A2A]", accent: "#D7992E", icon: "💰" },
   ];
 
   return (
