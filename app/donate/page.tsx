@@ -159,7 +159,7 @@ export default function DonatePage() {
                           : "bg-[#F5F1E6] text-[#3a4a3a] hover:bg-[#ece5d6]"
                       }`}
                     >
-                      ${preset}
+                      Ksh {preset}
                     </button>
                   ))}
                 </div>
@@ -173,12 +173,12 @@ export default function DonatePage() {
 
                 <div className="relative">
                   <span className="absolute left-5 top-1/2 -translate-y-1/2 font-bold text-[#5a6a5a]">
-                    $
+                    
                   </span>
 
                   <input
                     type="number"
-                    placeholder="0.00"
+                    placeholder="eg. 50.00"
                     value={custom}
                     onChange={(e) => {
                       setCustom(e.target.value);
@@ -221,7 +221,7 @@ export default function DonatePage() {
                 onClick={() => setDonated(true)}
                 className="w-full rounded-2xl bg-gradient-to-r from-[#C65D3A] to-[#D7992E] px-6 py-5 text-lg font-extrabold text-white shadow-[0_8px_30px_rgba(198,93,58,0.35)] transition duration-300 hover:scale-[1.01] hover:shadow-2xl"
               >
-                Donate ${finalAmount || 0}{" "}
+                Donate Ksh {finalAmount || 0}{" "}
                 {frequency !== "once"
                   ? `/ ${frequency}`
                   : ""}
@@ -263,7 +263,7 @@ export default function DonatePage() {
                             : "bg-[#F5F1E6] text-[#9a9a8a]"
                         }`}
                       >
-                        ${impact.amt}
+                        Ksh {impact.amt}
                       </div>
 
                       <p
