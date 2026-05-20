@@ -55,7 +55,7 @@ export default async function DonationsPage() {
           Donations
         </h1>
         <p className="mt-1 text-sm text-[#5a6a5a]">
-          Total: ${total.toLocaleString()} · {completed} completed · {pending} pending · {failed} failed
+          Total: Ksh{total.toLocaleString()} · {completed} completed · {pending} pending · {failed} failed
         </p>
       </div>
 
@@ -110,7 +110,7 @@ export default async function DonationsPage() {
 
                   {/* Amount */}
                   <td className="px-6 py-4 font-bold text-[#0F4C4C]">
-                    ${Number(d.amount).toLocaleString()}
+                    Ksh {Number(d.amount).toLocaleString()}
                   </td>
 
                   {/* Frequency */}
