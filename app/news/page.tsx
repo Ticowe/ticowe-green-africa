@@ -1,6 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import NewsSection from "@/components/news/NewsSection";
+import NewsletterSubscribe from "@/components/news/NewsletterSubscribe";
+
 
 // ─── DATA ──────────────────────────────────────────────────────────────────────
 
@@ -218,264 +221,17 @@ export default function NewsPage() {
         </div>
       </section>
 
-      {/* ── FEATURED ARTICLE ── */}
-      {featured && (
-        <section className="px-6 py-16">
-          <div className="mx-auto max-w-7xl">
-            <div className="mb-6 text-xs font-bold uppercase tracking-[0.18em] text-[#C65D3A]">
-              Featured Story
-            </div>
 
-            <div className="overflow-hidden rounded-[2.5rem] bg-white shadow-[0_8px_48px_rgba(15,76,76,0.12)]">
-              <div className="grid lg:grid-cols-2">
-                {/* visual panel */}
-                <div
-                  className={`bg-gradient-to-br ${featured.bg} flex min-h-[320px] flex-col justify-between p-12`}
-                >
-                  <div>
-                    <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-2">
-                      <span className="text-lg">{featured.tag}</span>
-                      <span className="text-xs font-bold text-white/90">
-                        {featured.category}
-                      </span>
-                    </div>
-                  </div>
+      
 
-                  <div>
-                    <div className="mb-6 font-serif text-4xl font-black leading-tight text-white md:text-5xl">
-                      {featured.title}
-                    </div>
+      <NewsSection
+  searchQuery={searchQuery}
+  activeCategory={activeCategory}
+/>
 
-                    <div className="flex items-center gap-4 text-xs text-white/60">
-                      <span>📅 {featured.date}</span>
-                      <span>⏱ {featured.readTime}</span>
-                    </div>
-                  </div>
-                </div>
+     
 
-                {/* content panel */}
-                <div className="flex flex-col justify-between p-12">
-                  <div>
-                    <div
-                      className="mb-4 inline-flex rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest"
-                      style={{
-                        background: `${featured.accent}20`,
-                        color: featured.accent,
-                      }}
-                    >
-                      {featured.category}
-                    </div>
-
-                    <p className="text-[16px] leading-9 text-[#3a4a3a]">
-                      {featured.excerpt}
-                    </p>
-                  </div>
-
-                  <div className="mt-10 flex items-center justify-between">
-                    <button className="rounded-2xl bg-[#0F4C4C] px-6 py-3 text-sm font-bold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-[#145B5B]">
-                      Read Full Story →
-                    </button>
-                    <div className="flex gap-3">
-                      <button className="flex h-10 w-10 items-center justify-center rounded-full border border-[#e0d8c8] text-sm transition hover:border-[#0F4C4C]">
-                        🔗
-                      </button>
-                      <button className="flex h-10 w-10 items-center justify-center rounded-full border border-[#e0d8c8] text-sm transition hover:border-[#0F4C4C]">
-                        📤
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* ── ARTICLE GRID ── */}
-      <section className="px-6 pb-24">
-        <div className="mx-auto max-w-7xl">
-          {rest.length > 0 ? (
-            <>
-              <div className="mb-8 flex items-center justify-between">
-                <div className="text-xs font-bold uppercase tracking-[0.18em] text-[#C65D3A]">
-                  {activeCategory === "All" ? "All Stories" : activeCategory} —{" "}
-                  {rest.length} article{rest.length !== 1 ? "s" : ""}
-                </div>
-              </div>
-
-              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                {rest.map((article) => (
-                  <article
-                    key={article.id}
-                    className="group flex flex-col overflow-hidden rounded-[2rem] bg-white shadow-[0_2px_20px_rgba(0,0,0,0.06)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_16px_48px_rgba(15,76,76,0.14)]"
-                  >
-                    {/* top color bar + icon */}
-                    <div
-                      className={`bg-gradient-to-r ${article.bg} flex items-end justify-between px-8 py-7`}
-                    >
-                      <div className="text-4xl">{article.tag}</div>
-                      <div className="rounded-full bg-white/15 px-3 py-1 text-xs font-bold text-white">
-                        {article.category}
-                      </div>
-                    </div>
-
-                    {/* content */}
-                    <div className="flex flex-1 flex-col p-8">
-                      <div className="mb-3 flex items-center gap-3 text-xs text-[#9a9a8a]">
-                        <span>{article.date}</span>
-                        <span>·</span>
-                        <span>{article.readTime}</span>
-                      </div>
-
-                      <h3 className="mb-4 font-serif text-[18px] font-black leading-tight text-[#1A2A22] transition-colors group-hover:text-[#0F4C4C]">
-                        {article.title}
-                      </h3>
-
-                      <p className="flex-1 text-[13px] leading-7 text-[#5a6a5a]">
-                        {article.excerpt.slice(0, 140)}…
-                      </p>
-
-                      <div className="mt-6 flex items-center justify-between">
-                        <button
-                          className="text-sm font-bold transition-colors hover:text-[#C65D3A]"
-                          style={{ color: article.accent }}
-                        >
-                          Read More →
-                        </button>
-                        <div
-                          className="h-1.5 w-1.5 rounded-full"
-                          style={{ background: article.accent }}
-                        />
-                      </div>
-                    </div>
-                  </article>
-                ))}
-              </div>
-            </>
-          ) : (
-            <div className="py-24 text-center">
-              <div className="mb-4 text-5xl">🔍</div>
-              <h3 className="mb-2 font-serif text-2xl font-black text-[#1A2A22]">
-                No articles found
-              </h3>
-              <p className="text-[#5a6a5a]">
-                Try a different search term or category filter.
-              </p>
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* ── IN THE PRESS ── */}
-      <section className="bg-white px-6 py-24">
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-12 grid gap-4 lg:grid-cols-2 lg:items-end">
-            <div>
-              <div className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-[#C65D3A]">
-                Media Coverage
-              </div>
-              <h2 className="font-serif text-4xl font-black leading-tight text-[#1A2A22] md:text-5xl">
-                TICOWE in the Press
-              </h2>
-            </div>
-            <p className="text-[15px] leading-8 text-[#5a6a5a] lg:text-right">
-              TICOWE's work has been recognised by national and regional media
-              outlets covering Kenya's community development landscape.
-            </p>
-          </div>
-
-          <div className="grid gap-6 md:grid-cols-3">
-            {pressItems.map((item) => (
-              <div
-                key={item.title}
-                className="rounded-[1.75rem] border border-[#e8e0d0] bg-[#F5F1E6] p-8 transition-all duration-200 hover:border-[#0F4C4C]/30 hover:shadow-md"
-              >
-                <div className="mb-5 flex items-center justify-between">
-                  <span className="rounded-xl bg-[#0F4C4C] px-3 py-1.5 text-xs font-bold text-white">
-                    {item.outlet}
-                  </span>
-                  <span className="text-xs text-[#9a9a8a]">{item.date}</span>
-                </div>
-                <h4 className="font-serif text-[16px] font-black leading-snug text-[#1A2A22]">
-                  {item.title}
-                </h4>
-                <button className="mt-5 text-xs font-bold text-[#C65D3A] transition hover:text-[#D7992E]">
-                  Read Article →
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── NEWSLETTER ── */}
-      <section className="px-6 py-24">
-        <div className="mx-auto max-w-5xl">
-          <div className="overflow-hidden rounded-[2.5rem] bg-gradient-to-r from-[#0F4C4C] via-[#145B5B] to-[#1E4E3F] shadow-2xl">
-            <div className="grid lg:grid-cols-2">
-              {/* left */}
-              <div className="px-12 py-16">
-                <div className="mb-4 inline-flex rounded-full border border-[#D7992E]/30 bg-[#D7992E]/15 px-4 py-1.5">
-                  <span className="text-xs font-bold uppercase tracking-[0.15em] text-[#D7992E]">
-                    Stay Connected
-                  </span>
-                </div>
-                <h2 className="mb-4 font-serif text-3xl font-black leading-tight text-white md:text-4xl">
-                  Get TICOWE Updates<br />in Your Inbox
-                </h2>
-                <p className="text-[15px] leading-7 text-[#E6EFEA]/80">
-                  Monthly field reports, community stories, impact data,
-                  and volunteer opportunities — delivered directly to you.
-                </p>
-
-                <div className="mt-8 flex gap-4 text-sm text-white/60">
-                  <span>✓ Monthly newsletter</span>
-                  <span>✓ No spam</span>
-                  <span>✓ Unsubscribe anytime</span>
-                </div>
-              </div>
-
-              {/* right */}
-              <div className="flex flex-col justify-center px-12 py-16">
-                {subscribed ? (
-                  <div className="text-center">
-                    <div className="mb-4 text-5xl">🎉</div>
-                    <h3 className="mb-2 font-serif text-2xl font-black text-white">
-                      You're subscribed!
-                    </h3>
-                    <p className="text-sm text-[#E6EFEA]/70">
-                      Welcome to the TICOWE community. Check your inbox for a
-                      confirmation email.
-                    </p>
-                  </div>
-                ) : (
-                  <>
-                    <label className="mb-2 block text-sm font-bold text-white/80">
-                      Your Email Address
-                    </label>
-                    <input
-                      type="email"
-                      placeholder="you@example.com"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      className="mb-4 w-full rounded-2xl border border-white/20 bg-white/10 px-5 py-4 text-sm text-white placeholder-white/40 outline-none backdrop-blur-md transition focus:border-[#D7992E] focus:ring-2 focus:ring-[#D7992E]/20"
-                    />
-                    <button
-                      onClick={() => email && setSubscribed(true)}
-                      className="w-full rounded-2xl bg-[#C65D3A] px-6 py-4 text-sm font-bold text-white shadow-lg transition-all duration-300 hover:scale-[1.02] hover:bg-[#D7992E]"
-                    >
-                      Subscribe to Updates →
-                    </button>
-                    <p className="mt-3 text-center text-xs text-white/40">
-                      We respect your privacy. Unsubscribe at any time.
-                    </p>
-                  </>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+  
 
       {/* ── CTA ── */}
       <section className="bg-[#F5F1E6] px-6 pb-24">
@@ -508,6 +264,11 @@ export default function NewsPage() {
           </div>
         </div>
       </section>
+
+      <NewsletterSubscribe />
+
+
+
     </div>
   );
 }
