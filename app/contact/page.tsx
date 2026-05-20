@@ -18,40 +18,32 @@ export default function Contact() {
   const [error, setError] = useState("");
 
   async function handleSubmit() {
-    setLoading(true);
-    setError("");
+  setLoading(true);
+  setError("");
 
-    try {
-      // Cast supabase instance to 'any' to bypass implicit table type safety limitations
-      const { error } = await (supabase as any).from("messages").insert([
-        {
-          full_name: form.name,
-          email: form.email,
-          subject: form.subject,
-          message: form.message,
-          status: "unread",
-        },
-      ]);
+  try {
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(form),
+    });
 
-      if (error) {
-        setError(error.message);
-        return;
-      }
+    const data = await res.json();
 
-      setSent(true);
-
-      setForm({
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
-      });
-    } catch (err: any) {
-      setError(err.message || "Something went wrong");
-    } finally {
-      setLoading(false);
+    if (!res.ok) {
+      throw new Error(data.message);
     }
+
+    setSent(true);
+    setForm({ name: "", email: "", subject: "", message: "" });
+  } catch (err: any) {
+    setError(err.message || "Something went wrong");
+  } finally {
+    setLoading(false);
   }
+}
 
   const contactInfo = [
     {
