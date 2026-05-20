@@ -12,9 +12,56 @@ export default function NewArticlePage() {
   const [form, setForm] = useState({ title: "", excerpt: "", content: "", category: "", cover_image: "" });
   const [saveStatus, setSaveStatus] = useState<"idle" | "saving" | "saved" | "error">("idle");
 
+  const [imageUploading, setImageUploading] = useState(false);
+  const [imageError, setImageError] = useState("");
+
   function set(key: keyof typeof form, value: string) {
     setForm((f) => ({ ...f, [key]: value }));
   }
+
+  async function uploadImage(file: File) {
+  setImageError("");
+
+  // Max 5MB
+  if (file.size > 5 * 1024 * 1024) {
+    setImageError("Image must not exceed 5MB.");
+    return;
+  }
+
+  try {
+    setImageUploading(true);
+
+    const data = new FormData();
+    data.append("file", file);
+    data.append(
+      "upload_preset",
+      process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET!
+    );
+
+    const res = await fetch(
+      `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`,
+      {
+        method: "POST",
+        body: data,
+      }
+    );
+
+    const uploaded = await res.json();
+
+    if (!uploaded.secure_url) {
+      throw new Error("Upload failed");
+    }
+
+    setForm((prev) => ({
+      ...prev,
+      cover_image: uploaded.secure_url,
+    }));
+  } catch (err: any) {
+    setImageError(err.message || "Upload failed");
+  } finally {
+    setImageUploading(false);
+  }
+}
 
   async function save(publish: boolean) {
     if (!form.title || !form.excerpt || !form.content || !form.category) {
@@ -114,14 +161,43 @@ export default function NewArticlePage() {
           </div>
 
           <div className="rounded-2xl bg-white p-6 shadow-sm">
-            <label className="mb-2 block text-xs font-bold uppercase tracking-widest text-[#C65D3A]">Cover Image URL</label>
-            <input type="url" placeholder="https://… or /images/…" value={form.cover_image} onChange={(e) => set("cover_image", e.target.value)}
-              className="w-full rounded-xl border border-[#e0d8c8] bg-[#F5F1E6] px-4 py-3 text-sm text-[#1A2A22] outline-none transition focus:border-[#0F4C4C] focus:ring-2 focus:ring-[#0F4C4C]/15"
-            />
-            {form.cover_image && (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img src={form.cover_image} alt="Preview" className="mt-3 h-32 w-full rounded-xl object-cover" onError={(e) => (e.currentTarget.style.display = "none")} />
-            )}
+            <label className="mb-2 block text-xs font-bold uppercase tracking-widest text-[#C65D3A]">
+  Cover Image
+</label>
+
+<input
+  type="file"
+  accept="image/*"
+  onChange={(e) => {
+    const file = e.target.files?.[0];
+    if (file) uploadImage(file);
+  }}
+  className="w-full rounded-xl border border-[#e0d8c8] bg-[#F5F1E6] px-4 py-3 text-sm"
+/>
+
+<p className="mt-2 text-xs text-[#9a9a8a]">
+  Maximum image size: 5MB
+</p>
+
+{imageUploading && (
+  <p className="mt-2 text-sm text-[#0F4C4C]">
+    Uploading image...
+  </p>
+)}
+
+{imageError && (
+  <p className="mt-2 text-sm text-red-600">
+    {imageError}
+  </p>
+)}
+
+{form.cover_image && (
+  <img
+    src={form.cover_image}
+    alt="Preview"
+    className="mt-4 h-40 w-full rounded-xl object-cover"
+  />
+)}
           </div>
 
           <div className="rounded-2xl bg-white p-6 shadow-sm">
