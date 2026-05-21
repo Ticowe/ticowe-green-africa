@@ -1,5 +1,13 @@
 import AdminSidebar from "@/components/admin/Sidebar";
 
+export const metadata = {
+  title: "TICOWE Admin",
+  description: "Managing TICOWE Website",
+  icons: {
+    icon: "/images/logo.png", // your favicon/logo
+  },
+};
+
 export default function AdminLayout({
   children,
 }: {
