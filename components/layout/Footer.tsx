@@ -159,7 +159,7 @@ export default function Footer() {
                   <Mail size={18} className="text-[#C65D3A]" />
                 </div>
 
-                <p>ticowegreenafrica@gmail.com</p>
+                <p>admin@ticowegreenafrica.com</p>
               </div>
             </div>
           </div>

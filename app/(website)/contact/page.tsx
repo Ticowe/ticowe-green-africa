@@ -61,7 +61,7 @@ export default function Contact() {
     {
       icon: "✉️",
       label: "Email",
-      value: "ticowegreenafrica@gmail.com",
+      value: "admin@ticowegreenafrica.com",
     },
     {
       icon: "🕐",
