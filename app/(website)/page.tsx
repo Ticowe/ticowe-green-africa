@@ -5,14 +5,16 @@ import Programs from "@/components/home/Programs";
 import Impact from "@/components/home/Impact";
 import BoardMembers from "@/components/home/BoardMembers";
 import CTASection from "@/components/home/CTASection";
+import VisionMission from "@/components/home/VisionMission";
 
 export default function HomePage() {
   return (
     <main className="overflow-hidden bg-white">
       <Hero />
-      <Stats />
       <AboutPreview />
+      <VisionMission />
       <Programs />
+      <Stats />
       <Impact />
       <BoardMembers />
       <CTASection />

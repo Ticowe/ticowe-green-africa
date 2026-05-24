@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import VisionMission from "@/components/home/VisionMission";
 
 export default function About() {
   const stats = [
@@ -223,9 +224,10 @@ export default function About() {
           </div>
         </div>
       </section>
-
+     
+     <VisionMission />
       {/* Values */}
-      <section className="bg-white py-20 px-6">
+      {/* <section className="bg-white py-20 px-6">
         <div className="max-w-6xl mx-auto text-center mb-12">
           <h2 className="text-3xl font-bold">Our Core Values</h2>
         </div>
@@ -239,7 +241,7 @@ export default function About() {
             </div>
           ))}
         </div>
-      </section>
+      </section> */}
 
       {/* CTA */}
       <section className="py-20 px-6 bg-[#F5F1E6]">
