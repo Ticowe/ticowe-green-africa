@@ -27,7 +27,7 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 z-50 w-full border-b border-[#0F4C4C]/10 bg-white/90 shadow-sm backdrop-blur-xl">
       {/* Top Accent Line */}
-      <div className="h-1 w-full bg-gradient-to-r from-[#0F4C4C] via-[#D7992E] to-[#556B2F]" />
+      {/* <div className="h-1 w-full bg-gradient-to-r from-[#0F4C4C] via-[#D7992E] to-[#556B2F]" /> */}
 
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
         {/* Logo */}

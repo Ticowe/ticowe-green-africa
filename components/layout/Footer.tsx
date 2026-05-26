@@ -196,12 +196,12 @@ export default function Footer() {
         </div>
 
         {/* Bottom Color Strip */}
-        <div className="mt-8 grid h-2 grid-cols-4 overflow-hidden rounded-full">
+        {/* <div className="mt-8 grid h-2 grid-cols-4 overflow-hidden rounded-full">
           <div className="bg-[#0F4C4C]" />
           <div className="bg-[#C65D3A]" />
           <div className="bg-[#D7992E]" />
           <div className="bg-[#556B2F]" />
-        </div>
+        </div> */}
       </div>
     </footer>
   );
