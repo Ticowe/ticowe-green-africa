@@ -1,7 +1,45 @@
-"use client";
+// "use client";
 
 import Link from "next/link";
 import VisionMission from "@/components/home/VisionMission";
+
+
+export const metadata = {
+  title: "About Us | TICOWE Green Africa",
+  description:
+    "Learn about TICOWE Green Africa, a Kenyan community-based non-profit organization empowering communities through sustainable development, agriculture, youth empowerment, education, and climate-smart initiatives.",
+
+  keywords: [
+    "TICOWE",
+    "TICOWE Green Africa",
+    "About TICOWE",
+    "NGO Kenya",
+    "Community empowerment Kenya",
+    "Women empowerment",
+    "Youth empowerment",
+    "Sustainable development",
+    "Climate smart farming",
+    "Agriculture Kenya",
+  ],
+
+  openGraph: {
+    title: "About Us | TICOWE Green Africa",
+    description:
+      "Community empowerment and sustainable development initiatives in Kenya.",
+    url: "https://ticowegreenafrica.com/about",
+    siteName: "TICOWE Green Africa",
+    images: [
+      {
+        url: "/images/logo.png",
+        width: 1200,
+        height: 630,
+        alt: "TICOWE Green Africa",
+      },
+    ],
+    locale: "en_KE",
+    type: "website",
+  },
+};
 
 export default function About() {
   const stats = [
