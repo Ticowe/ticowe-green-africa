@@ -53,6 +53,12 @@ export default function BoardMembers() {
           image: "board/lead_community_outreach.jpeg",
           description: "Iddah Achieng Sekoh is a passionate community outreach leader and advocate for social empowerment at TICOWE Green Africa. With a background in community development and social work, Iddah has dedicated her career to supporting vulnerable populations and driving positive change through grassroots initiatives.She holds a Bachelor’s degree in Social Work and has extensive experience in community engagement, program coordination, and advocacy for women and youth empowerment. Iddah has been instrumental in leading outreach programs focused on education, health, and economic empowerment, working closely with local communities to identify needs and implement sustainable solutions.Her commitment to service and community transformation is evident in her efforts to promote education for school-going children, support small-scale businesses, and empower youth and women through entrepreneurship initiatives. Iddah’s leadership and dedication continue to make a meaningful impact in the communities served by TICOWE Green Africa, fostering resilience, opportunity, and sustainable development. ",
         },
+        {
+          name: "Ruth Owino",
+          role: "Administration assistant",
+          image: "board/administration_assistant.jpeg",
+          description: "As President of the Diaspora Association, her responsibility is to create platforms that support women's empowerment through mentorship, education opportunities, leadership, entrepreneurship, and community engagement. She promotes the creation of an inclusive environment where women and girls can grow in confidence, develop their talents, and contribute meaningfully to their communities. Ruth is passionate about fostering a culture of empowerment and support for women and girls. Through her leadership, she continues to champion initiatives that uplift and empower women and girls.",
+        },
       ].map((member) => (
         <div
           key={member.name}
