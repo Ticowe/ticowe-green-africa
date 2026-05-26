@@ -86,7 +86,7 @@ export default function Footer() {
             <div className="mt-6 flex flex-col gap-4 text-sm text-[#E6EFEA]">
               {[
                 "Home",
-                "About Us",
+                "About",
                 "Programs",
                 "Projects",
                 "Volunteer",
@@ -94,7 +94,7 @@ export default function Footer() {
               ].map((item) => (
                 <Link
                   key={item}
-                  href="/"
+                  href={item === "Home" ? "/" : `/${item.toLowerCase().replace(/\s+/g, "-")}`}
                   className="transition-all duration-300 hover:translate-x-2 hover:text-[#D7992E]"
                 >
                   {item}
