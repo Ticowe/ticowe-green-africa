@@ -33,6 +33,19 @@ create table if not exists public.volunteers (
   created_at  timestamptz not null default now()
 );
 
+
+-- ── MEMBERSHIPS ────────────────────────────────────────────────
+create table if not exists public.memberships (
+  id              uuid primary key default uuid_generate_v4(),
+  full_name       text not null,
+  email           text not null,
+  phone           text not null,
+  receipt_number  text not null,
+  status          text not null default 'pending'
+                  check (status in ('pending', 'approved', 'rejected')),
+  created_at      timestamptz not null default now()
+);
+
 -- ── MESSAGES ───────────────────────────────────────────────────
 create table if not exists public.messages (
   id          uuid primary key default uuid_generate_v4(),
@@ -93,6 +106,7 @@ create table if not exists public.donations (
 -- Enable RLS on all tables
 alter table public.users        enable row level security;
 alter table public.volunteers   enable row level security;
+alter table public.memberships enable row level security;
 alter table public.messages     enable row level security;
 alter table public.news         enable row level security;
 alter table public.donations    enable row level security;
@@ -100,6 +114,9 @@ alter table public.donations    enable row level security;
 -- Public can INSERT volunteers and messages (from public forms)
 create policy "public_insert_volunteers" on public.volunteers
   for insert with check (true);
+
+create policy "public_insert_memberships" on public.memberships
+for insert with check (true);
 
 create policy "public_insert_messages" on public.messages
   for insert with check (true);
