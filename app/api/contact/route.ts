@@ -23,6 +23,23 @@ export async function POST(req: Request) {
         { status: 500 }
       );
     }
+    // send email to admin
+    await resend.emails.send({
+      from: email,
+      to: "admin@ticowegreenafrica.com",
+      subject: `New Message: ${subject}`,
+      html: `
+        <div style="font-family: Arial; line-height: 1.6;">
+          <h2>New Message from ${name}</h2>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Subject:</strong> ${subject}</p>
+          <p><strong>Message:</strong></p>
+          <p>${message}</p>
+          <br/>
+          <p>— TICOWE Green Africa</p>
+        </div>
+      `,
+    })
 
     // 2. Send thank you email
     await resend.emails.send({

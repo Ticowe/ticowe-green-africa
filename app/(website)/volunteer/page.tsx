@@ -23,24 +23,19 @@ export default function VolunteerPage() {
     setError("");
 
     try {
-      // Cast supabase instance to 'any' to bypass strict schema validation errors
-      const { error } = await (supabase as any).from("volunteers").insert([
-        {
-          full_name: form.name,
-          email: form.email,
-          phone: form.phone,
-          country: form.country,
-          skills: form.skills,
-          motivation: form.motivation,
-          duration: form.duration,
-          status: "pending",
-        },
-      ]);
+      const res = await fetch("/api/volunteer", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(form),
+    });
 
-      if (error) {
-        setError(error.message);
-        return;
-      }
+    const data = await res.json();
+
+    if (!res.ok) {
+      throw new Error(data.message);
+    }
 
       setSubmitted(true);
 
@@ -59,6 +54,7 @@ export default function VolunteerPage() {
       setLoading(false);
     }
   }
+
 
   const roles = [
     {
