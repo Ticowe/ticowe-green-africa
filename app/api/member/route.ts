@@ -13,7 +13,7 @@ export async function POST(req: Request) {
       return NextResponse.json(
         {
           success: false,
-          message: "Please fill in all required fields.",
+          message: "Please fill in all required fields!.",
         },
         { status: 400 }
       );
@@ -41,7 +41,6 @@ export async function POST(req: Request) {
         { status: 500 }
       );
     }
-
     // =============================
     // Notify Admin
     // =============================
