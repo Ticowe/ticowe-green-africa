@@ -186,7 +186,7 @@ export default function BecomeMemberPage() {
                     </span>
 
                     <span className="font-bold">
-                      123456
+                      880100
                     </span>
                   </div>
 
@@ -196,7 +196,7 @@ export default function BecomeMemberPage() {
                     </span>
 
                     <span className="font-bold">
-                      TIC001
+                      271045
                     </span>
                   </div>
 
