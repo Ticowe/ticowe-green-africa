@@ -3,6 +3,8 @@
 import { useState } from "react";
 import NewsSection from "@/components/news/NewsSection";
 import NewsletterSubscribe from "@/components/news/NewsletterSubscribe";
+import { Plus } from "lucide-react";
+import Link from "next/link";
 
 
 // ─── DATA ──────────────────────────────────────────────────────────────────────
@@ -266,6 +268,14 @@ export default function NewsPage() {
       </section>
 
       <NewsletterSubscribe />
+
+      {/* addd news button */}
+      <Link
+  href="/admin/login"
+  className="fixed bottom-8 right-8 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#0F4C4C] text-white shadow-xl transition hover:scale-110 hover:bg-[#145B5B]"
+>
+  <Plus className="h-6 w-6" />
+</Link>
 
 
 
