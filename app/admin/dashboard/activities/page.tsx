@@ -106,43 +106,63 @@ export default function AdminActivitiesPage() {
   }, []);
 
   async function deleteActivity(activity: ActivityItem) {
-    const confirmed = window.confirm(
-      `Are you sure you want to delete "${activity.title}"? This action cannot be undone.`,
+  const confirmed = window.confirm(
+    `Are you sure you want to delete "${activity.title}"? This action cannot be undone.`,
+  );
+
+  if (!confirmed) {
+    return;
+  }
+
+  try {
+    setDeletingId(activity.id);
+
+    const {
+      data: { user },
+      error: authError,
+    } = await supabase.auth.getUser();
+
+    if (authError || !user) {
+      throw new Error(
+        "Your session has expired. Please sign in again.",
+      );
+    }
+
+    const { data, error } = await (supabase as any)
+      .from("activities")
+      .delete()
+      .eq("id", activity.id)
+      .select("id");
+
+    if (error) {
+      throw new Error(error.message);
+    }
+
+    if (!data || data.length === 0) {
+      throw new Error(
+        "The activity was not deleted. Your account may not have permission to delete it.",
+      );
+    }
+
+    setActivities((currentActivities) =>
+      currentActivities.filter(
+        (item) => item.id !== activity.id,
+      ),
     );
 
-    if (!confirmed) {
-      return;
-    }
+    alert("Activity deleted successfully.");
+  } catch (error) {
+    console.error("Failed to delete activity:", error);
 
-    try {
-      setDeletingId(activity.id);
-
-      const { error } = await (supabase as any)
-        .from("activities")
-        .delete()
-        .eq("id", activity.id);
-
-      if (error) {
-        throw new Error(error.message);
-      }
-
-      setActivities((currentActivities) =>
-        currentActivities.filter(
-          (item) => item.id !== activity.id,
-        ),
-      );
-    } catch (error) {
-      console.error("Failed to delete activity:", error);
-
-      alert(
-        error instanceof Error
-          ? `Failed to delete activity: ${error.message}`
-          : "Failed to delete activity.",
-      );
-    } finally {
-      setDeletingId(null);
-    }
+    alert(
+      error instanceof Error
+        ? `Failed to delete activity: ${error.message}`
+        : "Failed to delete activity.",
+    );
+  } finally {
+    setDeletingId(null);
   }
+}
 
   async function toggleStatus(activity: ActivityItem) {
     const nextStatus: ActivityStatus =
