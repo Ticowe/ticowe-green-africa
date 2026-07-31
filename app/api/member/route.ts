@@ -8,6 +8,17 @@ export async function POST(req: Request) {
   try {
     const { name, email, phone, receipt } = await req.json();
 
+    // if the data is empty return error
+    if (!name && !email && !phone && !receipt) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: "Please fill in all required fields!.",
+        },
+        { status: 400 }
+      );
+    }
+
     // Validate fields
     if (!name || !email || !phone || !receipt) {
       return NextResponse.json(

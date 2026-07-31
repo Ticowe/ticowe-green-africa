@@ -8,6 +8,14 @@ export async function POST(req: Request) {
   try {
     const { name, email, subject, message } = await req.json();
 
+    // if the field are empty, return error
+    if (!name || !email || !subject || !message) {
+      return NextResponse.json(
+        { success: false, message: "All fields are required." },
+        { status: 400 }
+      );
+    }
+
     // 1. Save to Supabase (Cast to 'any' to bypass strict schema checks)
     const { error } = await (supabaseAdmin as any).from("messages").insert({
       full_name: name,

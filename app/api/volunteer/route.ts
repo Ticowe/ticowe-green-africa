@@ -16,6 +16,26 @@ export async function POST(req: Request) {
       duration,
     } = await req.json();
 
+    if (
+  !name ||
+  !email ||
+  !phone ||
+  !country ||
+  !skills ||
+  !motivation ||
+  !duration
+) {
+  return NextResponse.json(
+    {
+      success: false,
+      message: "All fields are required.",
+    },
+    {
+      status: 400,
+    }
+  );
+}
+
     // Save application
     const { error } = await (supabaseAdmin as any)
       .from("volunteers")

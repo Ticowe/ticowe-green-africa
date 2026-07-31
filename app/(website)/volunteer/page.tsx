@@ -278,6 +278,7 @@ export default function VolunteerPage() {
                           [field.key]: e.target.value,
                         })
                       }
+                      required
                       className="w-full border rounded-xl px-4 py-3 bg-white outline-none focus:ring-2 focus:ring-[#0F4C4C]"
                     />
                   </div>
@@ -290,6 +291,7 @@ export default function VolunteerPage() {
                 </label>
 
                 <select
+                  required
                   value={form.duration}
                   onChange={(e) =>
                     setForm({
@@ -314,6 +316,7 @@ export default function VolunteerPage() {
                 </label>
 
                 <textarea
+                  required
                   rows={4}
                   placeholder="Describe your skills and experience..."
                   value={form.skills}
@@ -333,6 +336,7 @@ export default function VolunteerPage() {
                 </label>
 
                 <textarea
+                required
                   rows={5}
                   placeholder="Why do you want to volunteer with TICOWE?"
                   value={form.motivation}

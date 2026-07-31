@@ -8,6 +8,7 @@ import { supabase } from "@/lib/supabase/client";
 const nav = [
   { href: "/admin/dashboard/", label: "Dashboard", icon: "⊞" },
   { href: "/admin/dashboard/users", label: "Users", icon: "👤" },
+  { href: "/admin/dashboard/members", label: "Members", icon: "👤" },
   { href: "/admin/dashboard/volunteers", label: "Volunteers", icon: "🤝" },
   { href: "/admin/dashboard/messages", label: "Messages", icon: "✉️" },
   // { href: "/admin/dashboard/news", label: "News", icon: "📰" },
