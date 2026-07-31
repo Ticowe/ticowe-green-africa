@@ -10,7 +10,8 @@ const nav = [
   { href: "/admin/dashboard/users", label: "Users", icon: "👤" },
   { href: "/admin/dashboard/volunteers", label: "Volunteers", icon: "🤝" },
   { href: "/admin/dashboard/messages", label: "Messages", icon: "✉️" },
-  { href: "/admin/dashboard/news", label: "News", icon: "📰" },
+  // { href: "/admin/dashboard/news", label: "News", icon: "📰" },
+  { href: "/admin/dashboard/activities", label: "Activities", icon: "📰"},
   { href: "/admin/dashboard/donations", label: "Donations", icon: "💰" },
 ];
 

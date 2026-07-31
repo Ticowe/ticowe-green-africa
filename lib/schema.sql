@@ -74,6 +74,49 @@ create table if not exists public.news (
   updated_at    timestamptz not null default now()
 );
 
+-- activities schema
+create table if not exists public.activities (
+  id uuid primary key default uuid_generate_v4(),
+
+  title text not null,
+  excerpt text not null,
+  description text not null,
+  category text not null,
+
+  activity_date date not null,
+  location text,
+
+  -- Stores an array containing images and videos.
+  media jsonb not null default '[]'::jsonb,
+
+  -- The first uploaded file is used as the cover.
+  cover_media_url text,
+  cover_media_type text
+    check (
+      cover_media_type is null
+      or cover_media_type in ('image', 'video')
+    ),
+
+  status text not null default 'draft'
+    check (status in ('draft', 'published')),
+
+  author_id uuid references auth.users(id)
+    on delete set null,
+
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now(),
+  published_at timestamptz
+);
+
+create index if not exists activities_status_idx
+  on public.activities(status);
+
+create index if not exists activities_category_idx
+  on public.activities(category);
+
+create index if not exists activities_date_idx
+  on public.activities(activity_date desc);
+
 -- Auto-update updated_at on news
 create or replace function update_updated_at()
 returns trigger as $$
