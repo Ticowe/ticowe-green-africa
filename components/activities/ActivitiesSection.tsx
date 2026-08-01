@@ -1,6 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import {
+  ArrowRight,
   CalendarDays,
   ImageIcon,
   MapPin,
@@ -188,97 +190,105 @@ export default function ActivitiesSection({
               const mediaCount = activity.media?.length ?? 0;
 
               return (
-                <article
-                  key={activity.id}
-                  className="group overflow-hidden rounded-[28px] bg-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
-                >
-                  <div className="relative h-60 overflow-hidden bg-[#e8e1d4]">
-                    {coverMedia ? (
-                      coverMedia.type === "video" ? (
-                        <>
-                          <video
-                            src={coverMedia.url}
-                            muted
-                            playsInline
-                            preload="metadata"
-                            className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                          />
+                <Link
+  key={activity.id}
+  href={`/activities/${activity.id}`}
+  className="group block"
+>
+  <article className="h-full overflow-hidden rounded-[28px] bg-white shadow-lg transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-2xl">
+    <div className="relative h-60 overflow-hidden bg-[#e8e1d4]">
+      {coverMedia ? (
+        coverMedia.type === "video" ? (
+          <>
+            <video
+              src={coverMedia.url}
+              muted
+              playsInline
+              preload="metadata"
+              className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+            />
 
-                          <div className="absolute inset-0 flex items-center justify-center bg-black/20">
-                            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white/90 text-[#0F4C4C] shadow-lg backdrop-blur">
-                              <Play
-                                size={24}
-                                className="ml-1"
-                                fill="currentColor"
-                              />
-                            </div>
-                          </div>
-                        </>
-                      ) : (
-                        <img
-                          src={coverMedia.url}
-                          alt={activity.title}
-                          className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                        />
-                      )
-                    ) : (
-                      <div className="flex h-full w-full flex-col items-center justify-center bg-gradient-to-br from-[#0F4C4C] to-[#145B5B] text-white">
-                        <ImageIcon size={42} />
+            <div className="absolute inset-0 flex items-center justify-center bg-black/20">
+              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white/90 text-[#0F4C4C] shadow-lg backdrop-blur">
+                <Play
+                  size={24}
+                  className="ml-1"
+                  fill="currentColor"
+                />
+              </div>
+            </div>
+          </>
+        ) : (
+          <img
+            src={coverMedia.url}
+            alt={activity.title}
+            className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+          />
+        )
+      ) : (
+        <div className="flex h-full w-full flex-col items-center justify-center bg-gradient-to-br from-[#0F4C4C] to-[#145B5B] text-white">
+          <ImageIcon size={42} />
 
-                        <span className="mt-3 text-sm font-bold">
-                          Activity
-                        </span>
-                      </div>
-                    )}
+          <span className="mt-3 text-sm font-bold">
+            Activity
+          </span>
+        </div>
+      )}
 
-                    <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/55 to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/55 to-transparent" />
 
-                    <span className="absolute left-4 top-4 rounded-full bg-white/95 px-3 py-1.5 text-[11px] font-bold uppercase tracking-wide text-[#0F4C4C] shadow-sm backdrop-blur">
-                      {activity.category}
-                    </span>
+      <span className="absolute left-4 top-4 rounded-full bg-white/95 px-3 py-1.5 text-[11px] font-bold uppercase tracking-wide text-[#0F4C4C] shadow-sm backdrop-blur">
+        {activity.category}
+      </span>
 
-                    {mediaCount > 1 && (
-                      <span className="absolute bottom-4 right-4 inline-flex items-center gap-1.5 rounded-full bg-black/60 px-3 py-1.5 text-xs font-bold text-white backdrop-blur">
-                        <ImageIcon size={13} />
-                        {mediaCount} media
-                      </span>
-                    )}
-                  </div>
+      {mediaCount > 1 && (
+        <span className="absolute bottom-4 right-4 inline-flex items-center gap-1.5 rounded-full bg-black/60 px-3 py-1.5 text-xs font-bold text-white backdrop-blur">
+          <ImageIcon size={13} />
+          {mediaCount} media
+        </span>
+      )}
+    </div>
 
-                  <div className="p-6">
-                    <div className="mb-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-[#7b857d]">
-                      <span className="inline-flex items-center gap-1.5">
-                        <CalendarDays
-                          size={14}
-                          className="text-[#C65D3A]"
-                        />
+    <div className="p-6">
+      <div className="mb-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-[#7b857d]">
+        <span className="inline-flex items-center gap-1.5">
+          <CalendarDays
+            size={14}
+            className="text-[#C65D3A]"
+          />
 
-                        {formatDate(activity.activity_date)}
-                      </span>
+          {formatDate(activity.activity_date)}
+        </span>
 
-                      {activity.location && (
-                        <span className="inline-flex items-center gap-1.5">
-                          <MapPin
-                            size={14}
-                            className="text-[#C65D3A]"
-                          />
+        {activity.location && (
+          <span className="inline-flex items-center gap-1.5">
+            <MapPin
+              size={14}
+              className="text-[#C65D3A]"
+            />
 
-                          <span className="max-w-[170px] truncate">
-                            {activity.location}
-                          </span>
-                        </span>
-                      )}
-                    </div>
+            <span className="max-w-[170px] truncate">
+              {activity.location}
+            </span>
+          </span>
+        )}
+      </div>
 
-                    <h2 className="mb-4 text-2xl font-black leading-snug text-[#1A2A22] transition group-hover:text-[#0F4C4C]">
-                      {activity.title}
-                    </h2>
+      <h2 className="mb-4 text-2xl font-black leading-snug text-[#1A2A22] transition group-hover:text-[#0F4C4C]">
+        {activity.title}
+      </h2>
 
-                    <p className="line-clamp-3 text-sm leading-7 text-[#5a6a5a]">
-                      {activity.excerpt}
-                    </p>
-                  </div>
-                </article>
+      <p className="line-clamp-3 text-sm leading-7 text-[#5a6a5a]">
+        {activity.excerpt}
+      </p>
+
+      <div className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-[#C65D3A] transition group-hover:gap-3">
+        Read full activity
+        <ArrowRight size={16} />
+      </div>
+    </div>
+  </article>
+</Link>
               );
             })}
           </div>
