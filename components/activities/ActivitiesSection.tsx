@@ -135,7 +135,6 @@ export default function ActivitiesSection({
         type: firstMedia.type,
       };
     }
-
     return null;
   }
 
@@ -150,7 +149,6 @@ export default function ActivitiesSection({
                 className="overflow-hidden rounded-[28px] bg-white shadow-sm"
               >
                 <div className="h-60 animate-pulse bg-[#e8e1d4]" />
-
                 <div className="space-y-4 p-6">
                   <div className="h-5 w-28 animate-pulse rounded-full bg-[#e8e1d4]" />
                   <div className="h-7 w-4/5 animate-pulse rounded-lg bg-[#e8e1d4]" />
@@ -164,7 +162,6 @@ export default function ActivitiesSection({
       </section>
     );
   }
-
   return (
     <section className="bg-[#F5F1E6] px-6 py-20">
       <div className="mx-auto max-w-7xl">
